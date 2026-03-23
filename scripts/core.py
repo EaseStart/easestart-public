@@ -51,7 +51,7 @@ CONFIDENCE_THRESHOLDS = {
 }
 
 EASESTART_CONFIG = {
-    "stages":     {"file": "stages/_SCHEMA.csv",     "search_cols": ["Stage", "Keywords", "Exit_Criteria", "Actions", "Frameworks"]},
+    "stages":     {"file": "stages/_SCHEMA.csv",     "search_cols": ["Stage", "Keywords", "Exit_Criteria", "Key_Metrics", "Actions", "Frameworks"]},
     "tools":      {"file": "tools/_SCHEMA.csv",       "search_cols": ["Name", "Category", "Subcategory", "Keywords", "Best_For"]},
     "tools_anti_patterns": {"file": "tools/anti-patterns.csv", "search_cols": ["Tool_Name", "When_Not_To_Use", "Warning", "Stage_Anti_Pattern"]},
     "programs":   {"file": "programs/_SCHEMA.csv",    "search_cols": ["Name", "Provider", "Category", "Keywords", "Best_For"]},
@@ -90,31 +90,33 @@ EASESTART_CONFIG = {
     "analytics_tools":   {"file": "analytics/analytics-tools.csv",  "search_cols": ["Tool", "Category", "Key_Features", "Best_For", "Anti_Pattern"]},
     # --- Round 1-7 enrichment domains ---
     # Grow
-    "mkt_launch":      {"file": "marketing/launch-platforms.csv",   "search_cols": ["Platform", "Category", "Keywords", "Description", "Best_For", "Anti_Pattern"]},
-    "mkt_sales":       {"file": "marketing/sales-outreach.csv",    "search_cols": ["Method", "Category", "Keywords", "Description", "Do_This", "Anti_Pattern"]},
-    "mkt_growth":      {"file": "marketing/growth-tactics.csv",    "search_cols": ["Tactic", "Category", "Keywords", "Description", "How_To_Execute", "Anti_Pattern"]},
-    "user_research":   {"file": "validation/user-research.csv",    "search_cols": ["Method", "Category", "Keywords", "Description", "Do_This", "Anti_Pattern"]},
-    "positioning":     {"file": "marketing/positioning.csv",       "search_cols": ["Concept", "Category", "Keywords", "Description", "Do_This", "Anti_Pattern"]},
+    "mkt_launch":      {"file": "marketing/launch-platforms.csv",   "search_cols": ["Platform", "Type", "Keywords", "Description", "Best_For", "Anti_Pattern"]},
+    "mkt_sales":       {"file": "marketing/sales-outreach.csv",    "search_cols": ["Tactic", "Category", "Keywords", "Description", "Do_This", "Avoid_This"]},
+    "mkt_growth":      {"file": "marketing/growth-tactics.csv",    "search_cols": ["Tactic", "Category", "Keywords", "Description", "Do_This", "Avoid_This"]},
+    "user_research":   {"file": "validation/user-research.csv",    "search_cols": ["Method", "Category", "Keywords", "Description", "How_To_Do", "Anti_Pattern"]},
+    "positioning":     {"file": "marketing/positioning.csv",       "search_cols": ["Concept", "Category", "Keywords", "Description", "Do_This", "Avoid_This"]},
     "brand_identity":  {"file": "marketing/brand-identity.csv",    "search_cols": ["Element", "Category", "Keywords", "Description", "Do_This", "Anti_Pattern"]},
     "analytics":       {"file": "ops/analytics-setup.csv",         "search_cols": ["Step", "Category", "Keywords", "Description", "Tool", "Do_This", "Anti_Pattern"]},
     # Protect
     "privacy":         {"file": "legal/data-privacy.csv",          "search_cols": ["Requirement", "Category", "Keywords", "Description", "Implementation", "Risk_If_Ignored"]},
-    "legal_resources": {"file": "legal/legal-resources.csv",       "search_cols": ["Resource", "Category", "Keywords", "Description", "When_To_Use", "Anti_Pattern"]},
-    "insurance_risk":  {"file": "legal/insurance-risk.csv",        "search_cols": ["Risk", "Category", "Keywords", "Description", "Coverage", "Priority"]},
+    "legal_resources": {"file": "legal/legal-resources.csv",       "search_cols": ["Resource", "Category", "Keywords", "Description", "Best_For", "Documents_Available"]},
+    "insurance_risk":  {"file": "legal/insurance-risk.csv",        "search_cols": ["Risk", "Category", "Keywords", "Description", "Mitigation", "Priority"]},
     # People
-    "hiring":          {"file": "team/hiring-playbook.csv",        "search_cols": ["Step", "Category", "Keywords", "Description", "Do_This", "Anti_Pattern"]},
-    "leadership":      {"file": "team/leadership.csv",             "search_cols": ["Principle", "Category", "Keywords", "Description", "Practice", "Anti_Pattern"]},
-    "remote_work":     {"file": "team/remote-work.csv",            "search_cols": ["Practice", "Category", "Keywords", "Description", "Do_This", "Anti_Pattern"]},
+    "hiring":          {"file": "team/hiring-playbook.csv",        "search_cols": ["Practice", "Category", "Keywords", "Description", "Do_This", "Avoid_This"]},
+    "leadership":      {"file": "team/leadership.csv",             "search_cols": ["Skill", "Category", "Keywords", "Description", "Do_This", "Warning_Signs"]},
+    "remote_work":     {"file": "team/remote-work.csv",            "search_cols": ["Practice", "Category", "Keywords", "Description", "Do_This", "Avoid_This"]},
     "founder_psych":   {"file": "psychology/founder-psychology.csv", "search_cols": ["Concept", "Category", "Keywords", "Description", "Impact_On_Founders", "Mitigation"]},
     # Money
-    "fundraising":     {"file": "finance/fundraising.csv",         "search_cols": ["Topic", "Category", "Keywords", "Description", "Do_This", "Anti_Pattern"]},
-    "revenue_opt":     {"file": "finance/revenue-optimization.csv", "search_cols": ["Strategy", "Category", "Keywords", "Description", "Do_This", "Anti_Pattern"]},
+    "fundraising":     {"file": "finance/fundraising.csv",         "search_cols": ["Topic", "Category", "Keywords", "Description", "Do_This", "Avoid_This"]},
+    "revenue_opt":     {"file": "finance/revenue-optimization.csv", "search_cols": ["Strategy", "Category", "Keywords", "Description", "How_To_Do", "Anti_Pattern"]},
     # Build
     "mvp_patterns":    {"file": "build/mvp-patterns.csv",          "search_cols": ["Pattern", "Category", "Keywords", "Description", "When_To_Use", "Anti_Pattern"]},
     # Operate
-    "startup_tools":   {"file": "ops/startup-tools.csv",           "search_cols": ["Tool", "Category", "Keywords", "Description", "Pricing", "Best_For"]},
+    "startup_tools":   {"file": "ops/startup-tools.csv",           "search_cols": ["Tool", "Category", "Keywords", "Description", "Free_Tier", "Best_For"]},
     "customer_success": {"file": "ops/customer-success.csv",       "search_cols": ["Practice", "Category", "Keywords", "Description", "Do_This", "Warning_Signs"]},
     "automation":      {"file": "ops/automation-playbook.csv",     "search_cols": ["Task", "Category", "Keywords", "Description", "Tool", "Automate_When"]},
+    # OSINT / Digital Intelligence
+    "osint_tools":     {"file": "ops/osint-tools.csv",             "search_cols": ["Tool", "Category", "Keywords", "Description", "Free_Tier", "Best_For", "Anti_Pattern"]},
 }
 
 # Domain detection keywords
@@ -177,6 +179,8 @@ DOMAIN_KEYWORDS = {
     "startup_tools":   ["startup tools", "best tools", "saas tools", "payment processing", "indie hacker tools", "tool stack", "startup software"],
     "customer_success": ["customer success", "health score", "customer health", "churn prevention", "onboarding flow", "nps", "customer retention", "qbr"],
     "automation":      ["automation playbook", "ci/cd", "cicd", "automate billing", "automate email", "what to automate", "monitoring alerting"],
+    # OSINT / Digital Intelligence
+    "osint_tools":     ["osint", "competitive intelligence", "brand scan", "domain lookup", "shodan", "wayback machine", "metadata", "reconnaissance", "competitor scan", "digital intelligence", "brand availability"],
 }
 
 # Cross-domain linking: when searching one domain, suggest related domains
@@ -233,6 +237,8 @@ CROSS_DOMAIN_LINKS = {
     "startup_tools":    ["tools", "ops_automation", "analytics"],
     "customer_success": ["revenue_opt", "analytics", "mkt_email"],
     "automation":       ["ops_automation", "startup_tools", "analytics"],
+    # OSINT / Digital Intelligence
+    "osint_tools":      ["security", "positioning", "brand_identity", "mkt_launch"],
 }
 
 
@@ -600,6 +606,12 @@ def search(
     rows, documents, bm25 = _get_cached_index(domain)
     if not rows:
         return []
+
+    # Small-corpus override: domains with ≤10 rows (e.g. stages=7) have very low
+    # BM25 IDF because common terms appear in every doc. Lower threshold to avoid
+    # silently returning 0 results for valid queries.
+    if len(rows) <= 10 and min_score > 0.1:
+        min_score = 0.1
 
     # Stage filter: keep matching rows but DON'T discard non-matching
     # When stage filtering is active, we need a fresh BM25 on the subset

@@ -526,6 +526,42 @@ IF < 50 (Below Average):
 - `grand-slam-offer.md` (from Phase 3)
 - `validation-report.md` (behavioral + interview cross-reference)
 - `final-scorecard.md` (from Phase 4)
+- `output/{slug}/index.html` (HVS-style validation report — auto-generated)
+
+## Phase 4.5: GENERATE REPORT (Auto-trigger)
+
+> **Trigger:** When Phase 4 verdict is GO (score ≥ 72) or founder says "build"
+> **Skip if:** Founder chose PIVOT or KILL
+
+### Step 4.5.1: Generate HVS-style Validation Report
+
+// turbo
+```bash
+python3 scripts/generate_validation_report.py "{idea}" --industry {industry} --open
+```
+
+This generates a single-page HTML report with auto-research:
+- **Reframe** — Pain vs Feature, benchmarks, frameworks, 3 approaches
+- **DOV Validation** — Founder fit, JTBD, problem anatomy, scorecard
+- **Market Intel** — TAM, competitors, timing (auto-researched from KB)
+- **Grand Slam Offer** — Value equation, pricing (auto-researched)
+- **Digital Validation** — Reddit + HN pain signals (live scraping)
+- **Roadmap** — Timeline with phases
+
+> The script auto-researches all gaps (30+ KB domains + Reddit/HN). Use `--skip-research` for faster generation without live data.
+
+### Step 4.5.2: AI Enrichment (Optional)
+
+If founder wants deeper content, create `enrichment.json` with AI-synthesized data:
+
+```bash
+python3 scripts/generate_validation_report.py "{idea}" --data enrichment.json --open
+```
+
+### Anti-Patterns
+- ❌ Generating report before Phase 4 verdict — premature
+- ❌ Skipping auto-research — sections will have generic placeholders
+- ❌ Not opening in browser for founder review
 
 ## Time Estimate: 1-2 weeks (AI-era compressed)
 
