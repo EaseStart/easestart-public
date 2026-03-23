@@ -1,0 +1,21 @@
+group,pattern,description,best_for
+A,Video Deconstruction,"Watch service/meeting clips, identify micro-expressions and subtext","Đọc cảm xúc, Active listening"
+A,Role-Play Rotation,"Each person plays customer/staff/manager across scenarios",Đồng cảm xuyên stakeholder
+A,Silent Observation,"Visit a real venue (café, hotel lobby), report back what others missed",Quan sát tinh
+A,Trust Speed Round,"5-min 1:1s with strangers, debrief what built/broke rapport",Tạo trust nhanh
+A,Incongruence Spotting,"Scripted scenarios where words ≠ body language, identify the gap",Incongruence detection
+B,Reframe Challenge,"Same problem, generate 3 different frames in 10 min",Framing vấn đề
+B,Tradeoff Tribunal,"Present a real tradeoff, each group argues one side, then must choose and defend",Tradeoff judgment
+B,Triage Under Pressure,"15 tasks, 5 slots, conflicting stakeholder input, 10 min to decide",Prioritization
+B,Pivot Drill,"Mid-exercise, change the constraints — observe who adapts vs freezes",Thích ứng nhanh
+B,Assumption Auction,"List assumptions in a plan, bid on which are riskiest — test them",Assumption surfacing
+C,Insight Wall,"Post-its from 5 different data sources, find 3 cross-source insights in 20 min",Synthesis
+C,Service Safari,"Visit a real business, map the full service blueprint, present findings",Quan sát + Systems
+C,Domino Mapping,"Change one thing in a service → trace all downstream effects",Systems thinking
+C,Cross-Industry Steal,"Take a pattern from Industry A, apply to Industry B",Cross-domain patterns
+C,Quality Blind Test,"Experience 3 versions of same service, rank and articulate WHY",Taste & thẩm mỹ
+D,Hot Seat Facilitation,"Each person facilitates a 15-min discussion, live feedback from group",Facilitation
+D,Bad News Delivery,"Practice saying 'no' to 5 different stakeholder types",Quản lý kỳ vọng
+D,Translation Round,"Explain same concept to engineer, CEO, designer — group rates clarity",Điều phối đa bên
+D,Coaching Fishbowl,"One person coaches another while class observes and provides feedback",Coaching
+D,Negotiation Sim,"Two parties with hidden interests must reach agreement",Negotiation

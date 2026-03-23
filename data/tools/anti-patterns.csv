@@ -1,0 +1,31 @@
+No,Tool_Name,When_Not_To_Use,Warning,Stage_Anti_Pattern
+1,Figma,"Stage 0-1: Don't design hi-fi before validating problem",Using Figma for detailed mockups when you should be doing customer interviews,Premature design before validation
+2,Sketch,"When team collaboration is needed — Sketch is Mac-only",Choosing single-platform tool for distributed team,Platform lock-in
+3,Notion,"Don't use as primary product analytics tool",Notion cannot replace PostHog/Mixpanel for event tracking,Wrong tool for analytics
+4,Linear,"Stage 0-2: Don't use project management tools before you have things to manage",Overcomplicating with PM tools when you have 0 tasks,Premature process
+5,Trello,"Stage 4+: Trello doesn't scale for engineering teams",Simple kanban breaks down with >10 active items,Wrong stage tool
+6,Vercel,"When you need websockets or long-running processes",Vercel serverless functions timeout at 10s (hobby) / 60s (pro),Architecture mismatch
+7,Webflow,"When you need complex user auth or database logic",Webflow is for marketing sites not web apps,Scope mismatch
+8,Shopify,"Don't use for SaaS products — Shopify is for physical/digital goods",Forcing SaaS into e-commerce platform,Wrong product type
+9,Supabase,"When you need graph database or complex NoSQL queries",Supabase is Postgres — use MongoDB/Neo4j for graph/document models,Data model mismatch
+10,Firebase,"When you need complex SQL queries or relational data",NoSQL = no joins. If your data is relational pick Supabase/Postgres,Schema mismatch
+11,Railway,"At Stage 5+ when you need enterprise SLAs",Railway is great for MVPs but lacks enterprise compliance features,Scale limitation
+12,Heroku,"Stage 4+: Heroku free tier removed and pricing increased significantly",Cost increases rapidly compared to alternatives like Railway/Vercel,Cost anti-pattern
+13,Stripe,"When your market doesn't support Stripe (some APAC/African countries)",Check Stripe availability in target market BEFORE building payment flow,Geography limitation
+14,Segment,"Stage 0-3: Overkill before you have meaningful event volume",Segment adds complexity without value when you have <1000 MAU,Premature analytics infra
+15,Amplitude,"Stage 0-2: Don't set up retention analytics before you have users to retain",Complex analytics setup with 0 users = wasted time,Premature optimization
+16,Hotjar,"When you have <100 daily visitors — sample too small for meaningful heatmaps",Heatmap data is noise with tiny traffic,Insufficient data
+17,HubSpot,"Stage 0-2: CRM is premature when you have 0 customers",HubSpot is powerful but adds overhead before you need it,Premature CRM
+18,Intercom,"Stage 0-2: Don't add customer support tool before having customers",Setting up chatbot when nobody is visiting your site,No users to support
+19,Ahrefs,"Stage 0-2: Don't invest in SEO tools before you have content to optimize",SEO investment without content strategy = wasted money,Premature SEO spend
+20,Zapier,"When you need low-latency or high-volume automations",Zapier has execution delays and per-task pricing that scales poorly,Performance + cost ceiling
+21,Chargebee,"Stage 0-3: Don't add subscription management before you have subscribers",Complex billing infra with 0 paying customers,Premature billing complexity
+22,DocSend,"When sharing openly — DocSend is for tracked confidential sharing",Using DocSend for blog posts or public content defeats the purpose,Wrong use case
+23,Bubble,"Stage 4+: No-code rarely scales past 1000 users without performance issues",Bubble has scaling limitations — migrate to code for growth stage,Scale ceiling
+24,ChatGPT,"When you need deterministic outputs — LLMs are probabilistic",Don't use ChatGPT as a decision-making engine for critical business logic,Non-deterministic risk
+25,ProductHunt,"For B2B enterprise products — PH audience is consumer/developer-oriented",Launching enterprise product on PH gets wrong audience,Audience mismatch
+26,AI Code Generation,"Stage 0: Don't vibe-code before identifying a clear problem to solve",Building random AI-generated apps without a validated problem = fast road to nowhere,Speed without direction
+27,Premature Polish,"Stage 1-2: Don't add animations/particles/juice before any user has tried the core product",Polishing UX for 0 users. Build core → ship → THEN polish based on what users actually use,Premature optimization (AI era)
+28,Build Without Deploy,"Stage 0-6: Building with AI but never deploying = zero validation",AI makes building easy but the VALUE is in shipping. Undeployed code = inventory waste,Zero-distribution MVP
+29,Survey Before Product,"Stage 2: Don't survey potential users when you already have a working product to let them try",In AI era you can build faster than survey. Let them TRY it instead of asking if they WOULD use it,Outdated validation method
+30,Enterprise Architecture for MVP,"Stage 1-3: Don't build Rust+WASM+microservices for an unvalidated idea",AI enables complex architecture but complex ≠ validated. Match architecture to stage not ambition,Over-engineering with AI

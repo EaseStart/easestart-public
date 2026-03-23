@@ -1,0 +1,33 @@
+No,Metric,Real_Or_Vanity,Why,What_To_Track_Instead,Stage_Relevant,Source
+1,Total signups,Vanity,"Signups without activation = empty numbers",Activated users (completed core action),3-5,Andrew Chen
+2,Page views,Vanity,"Traffic without conversion = vanity",Conversion rate (visits → signups),3-5,Google Analytics best practice
+3,Social media followers,Vanity,"Followers ≠ customers — zero correlation with revenue",Followers → website visits → signups pipeline,2-5,Buffer research
+4,App downloads,Vanity,"Downloads without D7 retention = wasted CAC",D7 and D30 retention rates,3-5,Andrew Chen — Mobile Growth
+5,Time on site,Depends,"Long dwell time can mean confusion not engagement",Task completion rate,3-4,Nielsen Norman Group
+6,Email list size,Vanity,"Large list with <2% open rate = worthless",Open rate × Click rate × Conversion to paid,2-5,ConvertKit data
+7,Revenue (one-time),Depends,"One big deal doesn't mean you have product-market fit",Monthly recurring revenue (MRR) trend over 3+ months,3-5,SaaStr
+8,Press mentions,Vanity,"PR doesn't drive sustainable growth for most startups",Direct traffic and organic signups,4-5,Paul Graham
+9,NPS score (alone),Depends,"High NPS with no retention = misleading",NPS + D30 retention together,4-5,Bain & Company
+10,Gross MRR,Real,"Shows total recurring revenue you're earning",MRR and growth rate month-over-month,4-6,ChartMogul
+11,Net Revenue Retention,Real,"Shows if existing customers expand — most important growth metric",NRR >100% = growing without new customers,5-6,Bessemer Cloud Index
+12,Sean Ellis PMF score,Real,"Directly measures product-market fit,Only survey that's empirically validated",Score ≥40% = PMF achieved,3-5,Sean Ellis
+13,CAC Payback Period,Real,"How long until a customer pays back acquisition cost",Target: <12 months (SaaS) or <3 months (consumer),4-6,Tomasz Tunguz
+14,LTV:CAC Ratio,Real,"Unit economics health check — sustainable if >3:1",Ratio + trend over time,4-6,David Skok — For Entrepreneurs
+15,Weekly active users (WAU),Real,"Actual usage — most honest metric of product value",WAU trend + WAU/MAU ratio (stickiness),3-5,Sequoia Capital
+16,Activation rate,Real,"% of signups who complete the core action — most improvable metric",Setup wizard completion|First core action done,3-4,Reforge Growth Series
+17,Feature usage concentration,Real,"If 1 feature = 80% usage you know your real value prop",Feature usage distribution heatmap,3-5,Amplitude best practice
+18,Revenue churn vs Logo churn,Real,"Revenue churn is more important — losing big customers hurts more","Monthly revenue churn <2% (SaaS benchmark)",4-6,ProfitWell
+19,Lines of AI-generated code,Vanity,"AI can generate 10K lines/day — quantity ≠ quality or validation",Deployed features with real usage data,1-3,Garry Tan (10K LOC/week with AI + 2025)
+20,Features built without users,Vanity,"Building 20 features for 0 users = premature polish",Core action completion rate on deployed product,1-3,Build-Ship-Measure
+21,Deploy frequency,Real,"How often you ship to real users — proxy for iteration speed",Deploys per week + time from commit to production,2-5,DORA metrics + Garry Tan
+22,Time to first real user,Real,"Most important AI-era metric — how fast can someone TRY your product",Days from idea to first external user trying the product,1-3,Pieter Levels methodology
+23,DAU/MAU ratio (alone),Vanity,"VC-backed growth trap — not suitable for profit-first Giantiny model",MRR growth + Profit Margin instead,1-6,Giantiny Biz — Anti-metrics (Doc 2)
+24,Absolute customer count,Vanity,"10 customers paying $5K/mo > 1000 paying $10/mo with 100x ops cost",Revenue per customer + operational cost per customer,1-6,Giantiny Biz — Anti-metrics (Doc 2)
+25,Growth velocity (alone),Vanity,"Optimizing speed over profit breaks the safety margin model",Profit density (profit per resource unit consumed),3-6,Giantiny Biz — Anti-metrics (Doc 2)
+26,Automation ratio,Real,"% of operations automated by Code — measures if leverage is working",Manual tasks remaining ÷ total operational tasks,2-6,Giantiny Biz — Leverage Tier (Doc 2)
+27,Inbound rate,Real,"% of new customers arriving organically — measures Media leverage strength",Inbound leads ÷ total new customers (target: >70%),3-6,Giantiny Biz — Leverage Tier (Doc 2)
+28,Source concentration,Real,"Traffic dependency on single platform — existential risk indicator",% from top channel (danger: >60% from one platform),3-6,Giantiny Biz — Leverage Tier (Doc 2)
+29,Profit density,Real,"Profit per resource unit — prevents agents from bloating to capture budget",Profit ÷ Resource consumed (not absolute profit),4-6,Giantiny Biz — Survival Tier (Doc 2)
+30,Switching cost depth,Real,"Integration depth — how many core workflows customer runs on your platform",Features used × workflows created × data stored,4-6,Giantiny Biz — MOAT Tier (Doc 2)
+31,UGC value ratio,Real,"% of product value created by users (templates/plugins/community answers)",User-generated assets ÷ total platform value,5-6,Giantiny Biz — MOAT Tier (Doc 2)
+32,Branded search volume,Real,"People searching your name vs searching the problem — measures authentic brand MOAT",Brand searches ÷ category searches trend,4-6,Giantiny Biz — MOAT Tier (Doc 2)

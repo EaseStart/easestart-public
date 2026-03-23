@@ -1,0 +1,212 @@
+{
+  "version": "1.0",
+  "description": "Hard enforcement rules for EaseStart agents. Unlike anti-patterns (advisory), guardrails are MANDATORY blocks and warnings that agents must enforce before recommending actions.",
+  "source": "Inspired by Agentic OS Policy-as-Code Engine. Adapted for EaseStart's stage-gated methodology.",
+  "rules": [
+    {
+      "id": "G-001",
+      "type": "BLOCK",
+      "domain": "growth",
+      "condition": "stage < 2 AND action.domain IN ['growth', 'mkt_channels', 'paid_ads']",
+      "message": "❌ Growth recommendations blocked until Stage 2 (idea validated). Complete exit criteria for current stage first.",
+      "severity": "CRITICAL",
+      "rationale": "Growth before validation wastes resources on unproven products"
+    },
+    {
+      "id": "G-002",
+      "type": "BLOCK",
+      "domain": "paid_ads",
+      "condition": "stage < 5 AND action.type == 'paid_advertising'",
+      "message": "❌ Paid advertising blocked until Stage 5. Organic channels must work first — ads amplify, they don't create demand.",
+      "severity": "CRITICAL",
+      "rationale": "Paid ads before organic conversion is proven burns cash on broken funnels"
+    },
+    {
+      "id": "G-003",
+      "type": "BLOCK",
+      "domain": "fundraising",
+      "condition": "stage < 4 AND action.type == 'raise_vc'",
+      "message": "❌ VC fundraising blocked until Stage 4 (PMF confirmed). Investors fund traction, not ideas.",
+      "severity": "CRITICAL",
+      "rationale": "Raising without traction leads to bad terms and misaligned incentives"
+    },
+    {
+      "id": "G-004",
+      "type": "BLOCK",
+      "domain": "hiring",
+      "condition": "stage < 5 AND action.type == 'full_time_hire'",
+      "message": "❌ Full-time hiring blocked until Stage 5. Automate with code first (Giantiny ③). Consider contractors for Stage 3-4.",
+      "severity": "HIGH",
+      "rationale": "Premature hiring burns runway and creates management overhead before PMF"
+    },
+    {
+      "id": "G-005",
+      "type": "WARN",
+      "domain": "budget",
+      "condition": "recommendation.monthly_cost > 500",
+      "message": "⚠️ Monthly cost >$500 — verify this aligns with current runway. Run unit economics check first.",
+      "severity": "HIGH",
+      "rationale": "Solo founders should keep burn ultra-low until profitable"
+    },
+    {
+      "id": "G-006",
+      "type": "BLOCK",
+      "domain": "scaling",
+      "condition": "pmf_score < 40 AND action.type == 'scale_acquisition'",
+      "message": "❌ Scaling blocked — Sean Ellis score below 40%. Fix product-market fit before investing in growth.",
+      "severity": "CRITICAL",
+      "rationale": "Scaling without PMF is the most expensive startup mistake"
+    },
+    {
+      "id": "G-007",
+      "type": "WARN",
+      "domain": "irreversible",
+      "condition": "action.reversibility == 'irreversible'",
+      "message": "⚠️ IRREVERSIBLE ACTION — This cannot be undone. Verify with CEO before proceeding. Show Impact Preview.",
+      "severity": "HIGH",
+      "rationale": "Irreversible decisions require extra scrutiny — cannot Ctrl+Z in business"
+    },
+    {
+      "id": "G-008",
+      "type": "BLOCK",
+      "domain": "channels",
+      "condition": "active_marketing_channels > 3 AND stage < 5",
+      "message": "❌ Channel concentration rule: max 3 active channels before Stage 5. Double down on #1 channel instead.",
+      "severity": "HIGH",
+      "rationale": "Spreading across 5+ channels means mediocre execution on all"
+    },
+    {
+      "id": "G-009",
+      "type": "WARN",
+      "domain": "platform_risk",
+      "condition": "single_channel_dependency > 70",
+      "message": "⚠️ Platform concentration risk: >70% traffic from single channel. Diversify before it becomes existential.",
+      "severity": "MEDIUM",
+      "rationale": "One algorithm change can kill 95% of traffic overnight"
+    },
+    {
+      "id": "G-010",
+      "type": "BLOCK",
+      "domain": "equity",
+      "condition": "equity_agreement AND NOT vesting_clause",
+      "message": "❌ Equity without vesting BLOCKED. 4-year vesting with 1-year cliff is mandatory. No exceptions.",
+      "severity": "CRITICAL",
+      "rationale": "No-vesting equity is the #1 co-founder mistake — leads to dead equity"
+    },
+    {
+      "id": "G-011",
+      "type": "WARN",
+      "domain": "validation",
+      "condition": "stage == 2 AND interview_count < 10",
+      "message": "⚠️ Validation incomplete: fewer than 10 interviews. Patterns emerge at interview 7-8. Keep going.",
+      "severity": "HIGH",
+      "rationale": "Sub-10 interview sample is statistically meaningless for pattern detection"
+    },
+    {
+      "id": "G-012",
+      "type": "BLOCK",
+      "domain": "launch",
+      "condition": "stage < 3 AND action.type == 'public_launch'",
+      "message": "❌ Public launch blocked until Stage 3 (MVP built + analytics tracking). Launching too early burns first impression.",
+      "severity": "HIGH",
+      "rationale": "First impressions are irreversible — Product Hunt launches cannot be redone"
+    },
+    {
+      "id": "G-013",
+      "type": "WARN",
+      "domain": "finance",
+      "condition": "runway_months < 6",
+      "message": "⚠️ RUNWAY WARNING: less than 6 months remaining. Switch to revenue-generating activities only.",
+      "severity": "CRITICAL",
+      "rationale": "Below 6 months runway triggers panic decisions — cut costs immediately"
+    },
+    {
+      "id": "G-014",
+      "type": "BLOCK",
+      "domain": "finance",
+      "condition": "runway_months < 3",
+      "message": "❌ EMERGENCY: less than 3 months runway. Only revenue-generating work allowed. All experiments halted.",
+      "severity": "CRITICAL",
+      "rationale": "Below 3 months is existential — every action must generate revenue"
+    },
+    {
+      "id": "G-015",
+      "type": "WARN",
+      "domain": "context_decay",
+      "condition": "reasoning_rule.validity_period != 'evergreen' AND last_review > validity_period",
+      "message": "⚠️ This recommendation may be outdated — the underlying rule has expired. Re-evaluate with current data.",
+      "severity": "MEDIUM",
+      "rationale": "Market conditions change — strategies that worked 3 months ago may no longer apply"
+    },
+    {
+      "id": "G-016",
+      "type": "BLOCK",
+      "domain": "leverage",
+      "condition": "action.requires_manual_labor == true AND NOT action.can_automate_with_code_or_media",
+      "message": "❌ LEVERAGE TEST FAILED — This initiative requires manual labor (Labor leverage). Giantiny ③ mandates: solve with Code or Media first. If it can't be automated, reject or redesign.",
+      "severity": "CRITICAL",
+      "rationale": "Central Giantiny filter: every initiative must use Code or Media leverage. Adding manual labor breaks the 'thin shell' model and creates scaling dependencies on headcount.",
+      "source": "Giantiny Biz — Doc 8: Hard Gates & Guardrails (Phép thử Đòn bẩy)"
+    },
+    {
+      "id": "G-017",
+      "type": "WARN",
+      "domain": "consultation",
+      "condition": "action.impact_level == 'high' AND action.cross_domain_validation_count < 2",
+      "message": "⚠️ CONSULTATION RULE — High-impact recommendation without cross-domain validation. Giantiny Tealamoeba protocol requires consultation from at least 2 other domain agents before activation.",
+      "severity": "HIGH",
+      "rationale": "Prevents tunnel vision. The Tealamoeba model requires every Amoeba to seek advice from 2 peers before activating a plan. Plans without sufficient consultation are suspended for CEO review.",
+      "source": "Giantiny Biz — Doc 4: Organization Structure (Tham vấn mục tiêu)"
+    },
+    {
+      "id": "G-018",
+      "type": "BLOCK",
+      "domain": "authenticity",
+      "condition": "action.type IN ['content', 'branding', 'positioning'] AND action.aligned_with_founder_identity == false",
+      "message": "❌ AUTHENTICITY GATE — Content or positioning does not align with founder's specific knowledge and authentic voice. Identity Guard blocks generic or competitor-copying strategies.",
+      "severity": "HIGH",
+      "rationale": "Founder's authentic brand is an unreplicable MOAT. Competitors can copy features in 3 months but cannot copy the trust an audience has in a specific person's name and philosophy.",
+      "source": "Giantiny Biz — Doc 8: Hard Gates & Guardrails (Authenticity Gate)"
+    },
+    {
+      "id": "G-019",
+      "type": "BLOCK",
+      "domain": "content_safety",
+      "condition": "action.type == 'content_publish' AND action.brand_safety_level >= 3",
+      "message": "❌ BRAND SAFETY: Content flagged as Level 3 (Red). Blocked from publishing. Check lighthouse.yaml negative_constraints for violations.",
+      "severity": "CRITICAL",
+      "rationale": "LOTUS Controller Micro level: Brand safety filter prevents content that touches banned topics, uses banned phrases, or risks audience trust.",
+      "source": "LOTUS System — Controller (Brand Safety Filter)"
+    },
+    {
+      "id": "G-020",
+      "type": "WARN",
+      "domain": "content_safety",
+      "condition": "action.type == 'content_publish' AND action.brand_safety_level == 2",
+      "message": "⚠️ BRAND SAFETY: Content flagged as Level 2 (Yellow). Requires human review before publishing. Check against lighthouse.yaml negative_constraints.",
+      "severity": "HIGH",
+      "rationale": "LOTUS Controller Micro level: Gray-area content needs founder review to ensure it aligns with brand voice and values.",
+      "source": "LOTUS System — Controller (Brand Safety Filter)"
+    },
+    {
+      "id": "G-021",
+      "type": "WARN",
+      "domain": "content_strategy",
+      "condition": "action.type == 'content_publish' AND action.ion_id IS NULL",
+      "message": "⚠️ LOTUS ION MISSING — Content published without Ion Bank reference. All content should trace back to a strategic Ion for performance tracking.",
+      "severity": "MEDIUM",
+      "rationale": "LOTUS Atomic Content System requires every piece of content to derive from an Ion. Untracked content cannot be analyzed for Diamond/Dead status.",
+      "source": "LOTUS System — Content System (Ion Traceability)"
+    },
+    {
+      "id": "G-022",
+      "type": "WARN",
+      "domain": "content_strategy",
+      "condition": "action.type == 'content_publish' AND action.lotus_layer == 'S' AND nutrition_mode == 'heartbeat'",
+      "message": "⚠️ LOTUS LAYER VIOLATION — Synergy (S) content detected in Heartbeat mode. Synergy content should only appear during Spike campaigns (days 12-14). Check nutrition-matrix.yaml.",
+      "severity": "HIGH",
+      "rationale": "LOTUS Nutrition Matrix rule: Selling in Heartbeat mode erodes trust. CTA/conversion content is reserved for Spike campaign cycles only.",
+      "source": "LOTUS System — Nutrition Matrix (Heartbeat Rules)"
+    }
+  ]
+}

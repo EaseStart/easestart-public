@@ -1,0 +1,26 @@
+No,Item,Category,Stage,Priority,Description,Cost_Estimate,DIY_Tool,When_Need_Lawyer,Giantiny_Note
+1,Choose entity type,Incorporation,1-2,P0,"Select LLC vs C-Corp vs S-Corp based on fundraising plans and tax needs","$0 (decision)",Stripe Atlas quiz,"When international or complex multi-founder",Use cheapest option until Stage 3
+2,File incorporation,Incorporation,1-2,P0,"Register with state + get EIN from IRS","$100-500",Stripe Atlas ($500) or Clerky ($800),"Never — self-service is fine",Giantiny ④ — don't overspend
+3,Founders Agreement,Incorporation,1-2,P0,"Equity splits + vesting + roles + departure terms","$1000-3000",Clerky template or Orrick free docs,"If 3+ founders or complex IP situation",Most critical legal doc
+4,IP Assignment Agreement,IP,1-2,P1,"All founder/contractor IP belongs to company","$500-1000",Orrick free startup docs,"If pre-existing IP from employer",Without this your IP is legally not yours
+5,NDA Template,IP,1-2,P1,"Protect confidential information shared with partners/hires","$200-500",Docracy free NDA templates,"Usually never — templates are fine",Don't over-NDA — it scares away partners
+6,Trademark search,IP,2-3,P2,"Check if your name/logo conflicts with existing marks","$0-300",USPTO TESS (free search),"If conflict found or international filing",Search before building brand
+7,Trademark registration,IP,3-4,P2,"Register brand name and logo with USPTO/relevant authority","$600-2000",Trademarkia ($199+) or USPTO direct,"If complex or international",Protect after PMF confirmed
+8,Terms of Service,Product Launch,3,P0,"Legal agreement between you and your users","$1000-3000",Termly or TermsFeed ($99-299),"If handling sensitive data or high liability",Required before public launch
+9,Privacy Policy,Product Launch,3,P0,"Required by law if collecting ANY personal data","$500-1500","Termly, TermsFeed, or Iubenda ($99+)","If processing health/financial/children data",GDPR and CCPA both require this
+10,Cookie Consent,Product Launch,3,P0,"Banner + consent mechanism for non-essential cookies (GDPR)","$0-200","Cookiebot, OneTrust free tier","Never — plug-and-play tools work",Required if you have EU visitors
+11,Open source license audit,Product Launch,3,P1,"Verify all dependencies are license-compatible","$0","FOSSA, Snyk, or manual check","If using AGPL in commercial product",GPL in SaaS can be legally complex
+12,Contractor Agreement,Hiring,3-4,P1,"Written agreement with freelancers defining scope + IP ownership","$500-1000",Bonsai ($19/mo) or HelloSign templates,"If contractor builds core product IP",Always include IP assignment clause
+13,Employment Contract,Hiring,4-5,P0,"Full-time hire agreement with role + comp + termination terms","$1000-2000 per",Gusto or Deel handle basic contracts,"For senior hires or non-standard terms",Include non-compete if applicable
+14,Stock Option Plan (ESOP),Hiring,4-5,P0,"Employee equity incentive plan","$3000-5000",Carta or Pulley setup,"Always — ESOP needs 409A valuation",Set aside 10-20% option pool
+15,409A Valuation,Hiring,4-5,P0,"Independent valuation of company shares (required for options)","$1000-5000",Carta 409A ($1250) or Eqvista,"Always — IRS requires it",Required before you can grant options
+16,Data Processing Agreement,Compliance,4-5,P1,"Agreement with vendors who process your users' data","$1000-2000",Privaon templates or vendor-provided,"If processing sensitive data (health/finance)",GDPR requires this for all data processors
+17,GDPR Compliance,Compliance,3-5,P1,"Full compliance with EU data protection regulation","$2000-10000",OneTrust or Osano (self-service),"If processing EU data at scale",Apply if ANY EU users — not just EU company
+18,CCPA Compliance,Compliance,3-5,P1,"California Consumer Privacy Act compliance","$1000-5000",TrustArc or self-audit,"If >50K CA consumers or selling data",Applicable to most SaaS with CA users
+19,Business Insurance,Risk,4-5,P1,"General liability + professional indemnity + D&O","$1000-5000/yr",Embroker or Vouch (startup-friendly),"Never — online purchase is fine",Get before first employee
+20,SOC 2 Type I,Compliance,5-6,P2,"Security audit for enterprise sales (point-in-time)","$20000-50000",Vanta ($10K+) or Drata ($12K+),"Always — auditor required",Only when enterprise clients demand it
+21,Patent Filing,IP,5-6,P2,"Protect novel technology or process","$5000-15000",Not DIY,"Always — patent attorney required",Only file if tech is genuinely novel
+22,Board Governance,Incorporation,5-6,P1,"Board meeting minutes + resolutions + observer rights","$2000-5000",Carta or Clerky board tools,"At series A or when adding board members",Required after institutional investment
+23,International Entity,Incorporation,5-6,P2,"Foreign subsidiary for international operations","$5000-20000",Deel or Remote for EOR alternative,"Always — cross-border is complex",Consider EOR before entity (cheaper)
+24,Employee Handbook,Hiring,4-5,P2,"Company policies + benefits + code of conduct","$0-500",Notion template or Gusto auto-generated,"If >10 employees",Keep simple until 20+ employees
+25,Cap Table Management,Incorporation,2-6,P1,"Accurate record of all equity ownership","$0-200/mo",Carta or Pulley (free tier),"At fundraising or complex equity events",Start tracking from day 1

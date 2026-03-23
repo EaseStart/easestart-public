@@ -1,0 +1,14 @@
+No,Program_Name,When_Not_To_Apply,Warning,Stage_Anti_Pattern
+1,AWS Activate,"When your product doesn't need cloud (static site on Vercel is fine)",Don't apply for $100K AWS credits just to use $50/month,Premature infrastructure
+2,Google Cloud for Startups,"When you're not using GCP services or Kubernetes",Switching from AWS to GCP just for credits = migration overhead,Vendor lock-in chasing
+3,Microsoft for Startups,"When you're not building B2B or enterprise product",Azure has steeper learning curve for solo devs vs Supabase/Vercel,Wrong audience fit
+4,Hatch by DigitalOcean,"When you need managed services (auth/realtime/edge functions)",DigitalOcean is raw — you'll need to configure everything yourself,Self-management overhead
+5,Mixpanel for Startups,"Stage 0-2: Don't set up product analytics before having users",Configuring 50 events with 0 users = wasted week,Premature analytics
+6,Segment Startup Program,"Stage 0-3: CDP is overkill before you have multiple data sources",Segment adds value when you have 3+ analytics tools — not before,Premature data infra
+7,Intercom Early Stage,"Stage 0-2: Don't add chat widget to site with 0 visitors",Intercom is expensive after year 1 — have revenue first,Cost trap after free period
+8,Zendesk for Startups,"When you have <10 support emails/week",Zendesk adds complexity for low-volume support. Use Gmail labels,Over-tooling support
+9,HubSpot for Startups,"Stage 0-2: CRM is premature when you have 0 leads",HubSpot is powerful but heavy — consider lighter CRM first,Feature overload
+10,Chargebee Launch,"When you have flat/simple pricing (use Stripe Checkout directly)",Chargebee adds value for complex billing — simple pricing doesn't need it,Premature billing complexity
+11,Notion for Startups,"When solo founder — free personal plan is usually sufficient",Don't get team plan credits when it's just you,Unnecessary upgrade
+12,Vercel for Startups,"When you're not using Next.js or React frameworks",Vercel is optimized for Next.js — other frameworks may not benefit,Framework mismatch
+13,Stripe Atlas,"When you're not planning to operate in the US market",Delaware C-Corp adds tax complexity for non-US founders,Wrong jurisdiction

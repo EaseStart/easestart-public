@@ -1,0 +1,16 @@
+No,Check,Category,Question,Green_Flag,Red_Flag,Weight,Source
+1,Vision alignment,Values,"Do they share the same definition of success?",Both want bootstrap to profitability OR both want VC path,One wants lifestyle biz and other wants unicorn,5,YC Startup School
+2,Work ethic,Behavior,"Have you seen them work under pressure?",Ships consistently even when unmotivated,Only works in bursts of inspiration,5,Paul Graham — Co-Founder Essay
+3,Complementary skills,Skills,"Do they fill a gap you can't fill yourself?",Strong where you're weak (tech+biz or product+sales),Same skillset = redundant hire,4,Steve Blank — Customer Development
+4,Communication style,Personality,"How do they handle disagreements?",Argues ideas directly and resolves quickly,Passive-aggressive or avoids conflict entirely,5,Harvard Business Review
+5,Financial alignment,Commitment,"What's their financial runway and salary expectation?","Similar runway (both can go 12+ months without salary)","One needs salary immediately while other has savings",4,Indie Hackers Community
+6,Grit and resilience,Behavior,"What have they completed that was really hard?","Finished a marathon, shipped a product, completed degree","Multiple abandoned projects, always has excuses",5,Angela Duckworth — Grit
+7,Integrity check,Values,"Would you trust them with your bank account?",Transparent about money and past failures,Hides information or exaggerates accomplishments,5,Warren Buffett (integrity test)
+8,Specific knowledge,Skills,"Do they have domain expertise that takes years to build?","Deep in the problem space (worked in industry 3+ years)",Generalist with surface-level knowledge of everything,4,Naval Ravikant — Specific Knowledge
+9,Customer Zero fit,Giantiny,"Do they PERSONALLY have the problem we're solving?","Uses workarounds for the problem daily","Read about the problem but never experienced it",3,Giantiny Pillar ①
+10,Builder vs talker,Behavior,"Can they show something they built end-to-end?","Portfolio of shipped products, even if small","Only presentations, decks, and plans — no shipping history",5,PG — Do Things That Don't Scale
+11,Trial period willingness,Commitment,"Will they do a 2-4 week trial before committing?",Enthusiastic about proving fit,Offended or refuses — demands commitment upfront,4,YC Co-Founder Matching
+12,Decision speed,Behavior,"How fast do they make decisions with incomplete data?",Makes 80% decisions in minutes with clear reasoning,"Analysis paralysis or needs consensus for everything",4,Jeff Bezos — Type 1 vs Type 2 Decisions
+13,Equity expectations,Commitment,"What equity split do they expect and why?",Willing to discuss based on contribution,Demands 50% regardless of when they join or what they contribute,4,Slicing Pie — Mike Moyer
+14,Founder market fit,Skills,"Why are THEY the right person to build THIS?","Unique combination of experience + problem + skill","Generic interest with no unique angle",3,Marc Andreessen — PMF
+15,Reference check,Verification,"What do their former colleagues/bosses say?","Would work with them again without hesitation","Vague praise or reluctance to recommend",4,Standard hiring practice

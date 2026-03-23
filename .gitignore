@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+
+# EaseStart local state
+.easestart_initialized
+
+# Generated output (user-specific)
+output/
+pm/
+
+# MCP server virtualenv
+mcp-server/.venv/
+
+# Generated audio/video (large binary files)
+*.mp3
+*.wav
+*.mp4
+*.m4a
+
+# Lock files (platform-specific)
+uv.lock
+
+# Embedded tools data
+data/.chromadb/
+pm/metrics.db
+pm/reports/
+__pycache__/
+
+# ByteRover context (user-specific)
+.brv/

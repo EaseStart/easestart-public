@@ -1,0 +1,13 @@
+No,Scenario,Recommended_Split,Vesting,Reasoning,Anti_Pattern,Source
+1,Equal contribution from day 1,50/50,4yr cliff 1yr,"Both quit jobs same day and contribute equally",Giving 50/50 to someone who joins 6 months late,YC Standard
+2,Idea originator + later tech co-founder,60/40,4yr cliff 1yr,"Idea person did initial validation and customers before tech joins","Equal split when one person did 6 months of work alone",Slicing Pie
+3,Technical builds MVP solo then finds biz,"55/45 or 60/40",4yr cliff 1yr,"Builder took more risk by creating the product first","Giving equal equity to someone who joins post-MVP",Paul Graham
+4,3 co-founders equal,33/33/33,4yr cliff 1yr,"All three commit from day 1 with complementary skills","3-way split when one person clearly contributes less",Standard
+5,3 co-founders unequal,45/30/25,4yr cliff 1yr,"Lead founder drives vision and does most work","Equal split to avoid awkward conversation",Standard
+6,Solo founder + first employee,90-95% / 5-10%,4yr cliff 1yr,"Employee joins with salary — lower risk than founder","Giving 20%+ to an employee (that's co-founder equity)",YC Standard
+7,Solo founder + advisor,97-99% / 1-3%,2yr no cliff,"Advisor provides introductions and monthly advice","Giving advisor 5%+ (advisors rarely earn more than 1-2%)",FAST Agreement
+8,Bootstrapped + sweat equity partner,Dynamic (Slicing Pie),Continuous,"Equity adjusts based on tracked hours × market rate","Fixed split before you know who will contribute what",Mike Moyer
+9,VC-backed co-founders,Split + option pool 10-20%,4yr cliff 1yr,"Set aside option pool for future employees before splitting","Forgetting option pool and having to dilute later",Term Sheet Guide
+10,Non-technical founder + dev agency,100% founder / 0% agency,N/A,"Pay cash for development — agencies are vendors not founders","Giving equity to a dev shop (they have no skin in game)",Common mistake
+11,Married co-founders,50/50 or role-based,4yr cliff 1yr,"Vesting protects both in case of divorce. Seriously.","No vesting because you're married (divorce = company death)",Legal best practice
+12,Part-time co-founder (keeps day job),Reduced % based on hours,Extended vesting,"Part-time = less risk taken = less equity earned","Full equity for part-time commitment",Fair equity principle

@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "easestart"
+version = "1.0.0"
+description = "AI-powered Startup Co-pilot — stage-gated AI agents with curated startup knowledge"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Jang Trịnh", email = "jang@easeui.design"}
+]
+keywords = ["startup", "ai", "founder", "copilot", "lean-startup", "agent"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+]
+
+[project.urls]
+Homepage = "https://github.com/EaseStart/easestart"
+Repository = "https://github.com/EaseStart/easestart"
+Issues = "https://github.com/EaseStart/easestart/issues"
+
+[project.scripts]
+easestart = "cli.main:main"
+
+[tool.setuptools.packages.find]
+include = ["cli*", "scripts*", "data*"]
+
+[tool.setuptools.package-data]
+"data" = ["**/*.csv"]
+"scripts" = ["*.py"]
+"cli" = ["*.py"]

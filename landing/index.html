@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EaseStart — AI Startup Co-pilot for Your Coding IDE</title>
+    <meta name="description" content="Turn your AI coding IDE into a startup co-pilot. 13 specialist agents, 554 knowledge rows, 30 industries. Works with Antigravity, Claude Code, Gemini CLI, Cursor.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* === DS-Foundations Tokens === */
+        :root {
+            --color-bg-primary: #ffffff;
+            --color-bg-inverse: #000000;
+            --color-text-primary: #000000;
+            --color-text-inverse: #ffffff;
+            --color-text-secondary: #4e4b66;
+            --color-accent: #14b8a6;
+            --color-border: #e0e0e0;
+            --font-heading: 'Saira Condensed', 'Impact', sans-serif;
+            --font-body: 'ui-rounded', 'SF Pro Rounded', system-ui, -apple-system, sans-serif;
+        }
+
+        /* === Reset === */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text-primary);
+            background: var(--color-bg-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === Hero === */
+        .hero {
+            background: var(--color-bg-inverse);
+            color: var(--color-text-inverse);
+            padding: 80px 73px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(20,184,166,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(78,75,102,0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 1811px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-label {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-accent);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(48px, 7vw, 96px);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 0.95;
+            margin-bottom: 32px;
+        }
+        .hero h1 span {
+            display: block;
+            color: var(--color-accent);
+        }
+        .hero-desc {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #999;
+            max-width: 640px;
+            margin-bottom: 48px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+        .hero-stat-value {
+            font-family: var(--font-heading);
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .hero-stat-label {
+            font-size: 13px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* === IDE Bar === */
+        .ide-bar {
+            background: #111;
+            border-top: 1px solid #222;
+            padding: 20px 73px;
+        }
+        .ide-bar-inner {
+            max-width: 1811px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .ide-bar-label {
+            font-size: 13px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font-heading);
+            margin-right: 8px;
+        }
+        .ide-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border: 1px solid #333;
+            color: #ccc;
+            font-size: 13px;
+            font-family: var(--font-body);
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .ide-badge:hover {
+            border-color: var(--color-accent);
+            color: var(--color-text-inverse);
+        }
+
+        /* === Sections === */
+        .section {
+            max-width: 1811px;
+            margin: 0 auto;
+            padding: 100px 73px;
+        }
+        .section-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .section-sub {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin-bottom: 56px;
+            line-height: 1.6;
+        }
+
+        /* === Terminal Block === */
+        .terminal {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            overflow: hidden;
+            margin-bottom: 56px;
+        }
+        .terminal-bar {
+            background: #161616;
+            padding: 10px 16px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .terminal-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+        }
+        .terminal-dot:nth-child(1) { background: #ff5f57; }
+        .terminal-dot:nth-child(2) { background: #febc2e; }
+        .terminal-dot:nth-child(3) { background: #28c840; }
+        .terminal-title {
+            color: #666;
+            font-size: 12px;
+            margin-left: 8px;
+            font-family: var(--font-body);
+        }
+        .terminal-body {
+            padding: 24px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        .terminal-body .prompt { color: var(--color-accent); }
+        .terminal-body .comment { color: #555; }
+        .terminal-body .output { color: #888; }
+        .terminal-body .highlight { color: #fff; }
+
+        /* === How It Works — 3 Steps === */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--color-bg-inverse);
+        }
+        .step-card {
+            background: var(--color-bg-primary);
+            padding: 48px 40px;
+        }
+        .step-num {
+            font-family: var(--font-heading);
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--color-border);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        .step-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .step-desc {
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        .step-code {
+            font-family: 'SF Mono', monospace;
+            font-size: 13px;
+            background: #f5f5f5;
+            padding: 12px 16px;
+            margin-top: 16px;
+            color: var(--color-text-primary);
+        }
+
+        /* === Agents Grid === */
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2px;
+            background: var(--color-bg-inverse);
+        }
+        .agent-card {
+            background: var(--color-bg-primary);
+            padding: 32px;
+            transition: background 0.2s;
+        }
+        .agent-card:hover { background: #fafafa; }
+        .agent-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        .agent-name {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .agent-stages {
+            font-size: 12px;
+            color: var(--color-accent);
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .agent-desc {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        /* === Comparison Table === */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .compare-table th {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: left;
+            padding: 16px 24px;
+            border-bottom: 3px solid var(--color-bg-inverse);
+            color: var(--color-text-secondary);
+        }
+        .compare-table td {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 15px;
+            vertical-align: top;
+        }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table .label { color: var(--color-text-secondary); font-weight: 600; }
+        .compare-table .ease { font-weight: 600; }
+
+        /* === Knowledge Pillars === */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--color-bg-inverse);
+        }
+        .pillar-card {
+            background: var(--color-bg-primary);
+            padding: 40px;
+        }
+        .pillar-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        .pillar-name {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .pillar-rows {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            color: var(--color-accent);
+            margin-bottom: 8px;
+        }
+        .pillar-domains {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* === CTA Section === */
+        .cta-section {
+            background: var(--color-bg-inverse);
+            color: var(--color-text-inverse);
+            padding: 100px 73px;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        .cta-section p {
+            font-size: 18px;
+            color: #999;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 48px;
+            background: var(--color-accent);
+            color: var(--color-bg-inverse);
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .cta-btn:hover { opacity: 0.85; }
+        .cta-sub {
+            font-size: 13px;
+            color: #555;
+            margin-top: 16px;
+        }
+
+        /* === Footer === */
+        .footer {
+            padding: 40px 73px;
+            text-align: center;
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            border-top: 1px solid var(--color-border);
+        }
+        .footer a {
+            color: var(--color-text-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: opacity 0.2s;
+        }
+        .footer a:hover { opacity: 0.7; }
+
+        /* === Separator === */
+        .sep {
+            max-width: 1811px;
+            margin: 0 auto;
+            padding: 0 73px;
+        }
+        .sep hr {
+            border: none;
+            border-top: 1px solid var(--color-border);
+        }
+
+        /* === Responsive === */
+        @media (max-width: 900px) {
+            .hero { padding: 48px 24px 64px; }
+            .section { padding: 64px 24px; }
+            .ide-bar { padding: 16px 24px; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .agents-grid { grid-template-columns: repeat(2, 1fr); }
+            .pillars-grid { grid-template-columns: 1fr 1fr; }
+            .hero-stats { gap: 32px; }
+            .cta-section { padding: 64px 24px; }
+            .footer { padding: 32px 24px; }
+        }
+        @media (max-width: 600px) {
+            .agents-grid { grid-template-columns: 1fr; }
+            .pillars-grid { grid-template-columns: 1fr; }
+            .hero-stats { flex-direction: column; gap: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-label">AI Startup Co-pilot</div>
+            <h1>
+                Your AI IDE<br>
+                <span>Becomes Your<br>Co-Founder</span>
+            </h1>
+            <p class="hero-desc">
+                Clone EaseStart into your project. Your AI coding IDE gains 13 specialist agents,
+                554 rows of curated startup knowledge, and proven frameworks from YC, Lean Startup, and JTBD.
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">554</div>
+                    <div class="hero-stat-label">Knowledge Rows</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">13</div>
+                    <div class="hero-stat-label">Specialist Agents</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">30</div>
+                    <div class="hero-stat-label">Industries</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">0</div>
+                    <div class="hero-stat-label">Dependencies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IDE Badges -->
+    <div class="ide-bar">
+        <div class="ide-bar-inner">
+            <span class="ide-bar-label">Works With</span>
+            <span class="ide-badge">Antigravity</span>
+            <span class="ide-badge">Claude Code</span>
+            <span class="ide-badge">Gemini CLI</span>
+            <span class="ide-badge">Cursor</span>
+            <span class="ide-badge">Windsurf</span>
+            <span class="ide-badge">Open Code</span>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <section class="section">
+        <h2 class="section-heading">3 Steps. That's It.</h2>
+        <p class="section-sub">No sign-up. No API keys. No database. Just Python 3 and your AI IDE.</p>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <div class="step-title">Clone</div>
+                <div class="step-desc">Clone the repo into your project folder. Agents, knowledge, and workflows load automatically.</div>
+                <div class="step-code">git clone github.com/EaseStart/easestart</div>
+            </div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <div class="step-title">Ask</div>
+                <div class="step-desc">Open your AI IDE and ask any startup question. The orchestrator routes to the right specialist.</div>
+                <div class="step-code">"I have 200 users but no revenue"</div>
+            </div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <div class="step-title">Execute</div>
+                <div class="step-desc">Agents propose plans with real data. You approve. They deliver — not generic advice, but staged action.</div>
+                <div class="step-code">→ growth-agent → pricing → 3-tier model</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Demo -->
+    <section class="section" style="padding-top: 0;">
+        <div class="terminal">
+            <div class="terminal-bar">
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+                <span class="terminal-title">easestart — conversation</span>
+            </div>
+            <div class="terminal-body">
+                <span class="prompt">You:</span> <span class="highlight">I want to build a personal finance app for Gen Z.</span><br>
+                <span class="prompt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="highlight">Help me evaluate this idea.</span><br><br>
+                <span class="comment">→ Orchestrator: Stage 0-1 detected. Routing to ideation-agent.</span><br>
+                <span class="comment">→ Searching: industries (FinTech), frameworks (Lean Canvas), reasoning...</span><br><br>
+                <span class="output">ideation-agent:</span><br>
+                <span class="output">Based on 554 knowledge rows and FinTech industry data:</span><br><br>
+                <span class="highlight">1. Lean Canvas Score: 7.2/10</span><br>
+                <span class="output">&nbsp;&nbsp;&nbsp;✓ Problem severity: HIGH (Gen Z financial literacy gap)</span><br>
+                <span class="output">&nbsp;&nbsp;&nbsp;✓ Existing alternatives: Weak (Momo = payments, not budgeting)</span><br>
+                <span class="output">&nbsp;&nbsp;&nbsp;⚠ Revenue model: Needs validation (Gen Z spending power)</span><br><br>
+                <span class="highlight">2. Counter-positioning analysis:</span><br>
+                <span class="output">&nbsp;&nbsp;&nbsp;Big banks can't: Speak Gen Z language, gamify savings</span><br>
+                <span class="output">&nbsp;&nbsp;&nbsp;Your edge: Community-first budgeting (TikTok distribution)</span><br><br>
+                <span class="highlight">3. Next step:</span> <span class="output">Run /validate-idea → 10 customer interviews</span><br>
+            </div>
+        </div>
+    </section>
+
+    <div class="sep"><hr></div>
+
+    <!-- Why EaseStart -->
+    <section class="section">
+        <h2 class="section-heading">Not Another ChatGPT Wrapper</h2>
+        <p class="section-sub">EaseStart is a knowledge system. Every answer has a source, a stage gate, and an anti-pattern check.</p>
+
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Generic AI</th>
+                    <th>EaseStart</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="label">Knowledge</td>
+                    <td>Training data cutoff</td>
+                    <td class="ease">554 curated rows, real sources</td>
+                </tr>
+                <tr>
+                    <td class="label">Advice</td>
+                    <td>Same for everyone</td>
+                    <td class="ease">Stage-gated — knows your stage</td>
+                </tr>
+                <tr>
+                    <td class="label">Warnings</td>
+                    <td>Won't tell you you're wrong</td>
+                    <td class="ease">Anti-pattern detection built in</td>
+                </tr>
+                <tr>
+                    <td class="label">Agents</td>
+                    <td>1 general assistant</td>
+                    <td class="ease">13 specialists with domain boundaries</td>
+                </tr>
+                <tr>
+                    <td class="label">Privacy</td>
+                    <td>Cloud-only</td>
+                    <td class="ease">100% local. Your data stays yours.</td>
+                </tr>
+                <tr>
+                    <td class="label">Cost</td>
+                    <td>$20/month</td>
+                    <td class="ease">Free. MIT licensed. Forever.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div class="sep"><hr></div>
+
+    <!-- Agents -->
+    <section class="section">
+        <h2 class="section-heading">13 Specialist Agents</h2>
+        <p class="section-sub">Each agent has deep domain expertise, stage awareness, and quality gates. The orchestrator routes your questions automatically.</p>
+
+        <div class="agents-grid">
+            <div class="agent-card">
+                <div class="agent-icon">🎯</div>
+                <div class="agent-name">Orchestrator</div>
+                <div class="agent-stages">Stage 0–6</div>
+                <div class="agent-desc">Routes questions, enforces quality gates, detects your stage automatically</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">💡</div>
+                <div class="agent-name">Ideation</div>
+                <div class="agent-stages">Stage 0–1</div>
+                <div class="agent-desc">Lean Canvas, idea scoring, counter-positioning analysis</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">🔍</div>
+                <div class="agent-name">Validation</div>
+                <div class="agent-stages">Stage 1–2</div>
+                <div class="agent-desc">Mom Test interviews, PMF survey design, Sean Ellis Score</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">🔨</div>
+                <div class="agent-name">MVP</div>
+                <div class="agent-stages">Stage 2–3</div>
+                <div class="agent-desc">Tech stack selection, sprint planning, launch checklist</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">📈</div>
+                <div class="agent-name">Growth</div>
+                <div class="agent-stages">Stage 3–5</div>
+                <div class="agent-desc">Pricing strategy, channels, retention, unit economics</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">💰</div>
+                <div class="agent-name">Fundraising</div>
+                <div class="agent-stages">Stage 4–6</div>
+                <div class="agent-desc">Pitch deck, term sheets, VC vs bootstrap decision</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">⚙️</div>
+                <div class="agent-name">Operations</div>
+                <div class="agent-stages">Stage 5–6</div>
+                <div class="agent-desc">Hiring, SOPs, MOAT building, scaling playbook</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">👥</div>
+                <div class="agent-name">Co-Founder</div>
+                <div class="agent-stages">Stage 0–4</div>
+                <div class="agent-desc">Equity splits, vesting schedules, conflict resolution</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">⚖️</div>
+                <div class="agent-name">Legal</div>
+                <div class="agent-stages">Stage 1–6</div>
+                <div class="agent-desc">Incorporation, contracts, compliance checklists</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">🧘</div>
+                <div class="agent-name">Wellness</div>
+                <div class="agent-stages">Stage 0–6</div>
+                <div class="agent-desc">Burnout detection, resilience frameworks, founder health</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">📢</div>
+                <div class="agent-name">Marketing</div>
+                <div class="agent-stages">Stage 2–6</div>
+                <div class="agent-desc">Content playbook, SEO, email sequences, community</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">💵</div>
+                <div class="agent-name">Finance</div>
+                <div class="agent-stages">Stage 2–6</div>
+                <div class="agent-desc">Bookkeeping, tax, cash flow, unit economics</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-icon">📋</div>
+                <div class="agent-name">PM</div>
+                <div class="agent-stages">Stage 0–6</div>
+                <div class="agent-desc">Daily standups, decisions log, sprint tracking, retros</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sep"><hr></div>
+
+    <!-- Knowledge -->
+    <section class="section">
+        <h2 class="section-heading">554 Rows of Real Knowledge</h2>
+        <p class="section-sub">Every row is sourced from real books, real companies, real frameworks. Not AI-generated filler.</p>
+
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-icon">🔨</div>
+                <div class="pillar-name">Build</div>
+                <div class="pillar-rows">186 ROWS</div>
+                <div class="pillar-domains">stages, tools, anti-patterns, frameworks, resources, templates</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">📢</div>
+                <div class="pillar-name">Grow</div>
+                <div class="pillar-rows">59 ROWS</div>
+                <div class="pillar-domains">channels, content, email, landing pages, community</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">💰</div>
+                <div class="pillar-name">Money</div>
+                <div class="pillar-rows">62 ROWS</div>
+                <div class="pillar-domains">pricing, bookkeeping, unit economics, programs</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">👥</div>
+                <div class="pillar-name">People</div>
+                <div class="pillar-rows">57 ROWS</div>
+                <div class="pillar-domains">team vetting, equity, psychology, case studies</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">🛡️</div>
+                <div class="pillar-name">Protect</div>
+                <div class="pillar-rows">47 ROWS</div>
+                <div class="pillar-domains">legal, contracts, security</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">⚙️</div>
+                <div class="pillar-name">Operate</div>
+                <div class="pillar-rows">143 ROWS</div>
+                <div class="pillar-domains">playbook, reasoning, metrics, support, automation, industries</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Start Building.<br>Stop Guessing.</h2>
+        <p>Free. Open-source. MIT licensed. Zero dependencies. 100% local.</p>
+        <a href="https://github.com/EaseStart/easestart" class="cta-btn">Get Started on GitHub</a>
+        <div class="cta-sub">git clone → open in AI IDE → ask anything</div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            Built by <a href="https://linkedin.com/in/jangtrinh">Jang Trịnh</a> ·
+            Founder & Chief Product Engineer @ <a href="https://easeui.design">EaseUI</a>
+        </p>
+        <p style="margin-top: 8px; color: #999; font-size: 12px;">
+            Giantiny Philosophy — nobody can compete with you at being you.
+        </p>
+    </footer>
+
+</body>
+</html>

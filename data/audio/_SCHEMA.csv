@@ -1,0 +1,16 @@
+No,Column,Type,Description,Example,Required
+1,No,integer,Sequential row number,1,yes
+2,Content_Type,string,Type of audio content being produced,"podcast,narration,explainer,promo",yes
+3,Keywords,string (comma-separated),Search/match keywords for agent routing,"podcast,script,hook,storytelling",yes
+4,Use_Case,string,Primary use case or scenario,"Workshop intro, Product demo, Course lecture",yes
+5,Format,string,"Audio output format (podcast, narration, TTS, voiceover)","podcast,tts-narration,voiceover,soundbite",yes
+6,Tool,string,Recommended tool/platform for generation,"Gemini TTS,NotebookLM,ElevenLabs,Manual",yes
+7,Duration,string,Recommended length range,"30-60s,2-5min,5-15min",yes
+8,Structure,string,Content structure template,"Hook→Core→CTA, Intro→Segments→Outro",yes
+9,Script_Template,string,Reusable script template with placeholders,"{hook} + {key_points} + {takeaway}",yes
+10,Voice_Style,string,Recommended voice characteristics,"calm professional,energetic upbeat,warm approachable",yes
+11,Best_Practice,string,Top tip for this content type,"Always read script aloud before generating",yes
+12,Anti_Pattern,string (pipe-separated),Common mistakes to avoid,"Reading word-for-word|Monotone delivery|Too long",yes
+13,Quality_Score,integer (1-10),Expected quality achievable with this approach,8,yes
+14,Cost_Per_Unit,string,Approximate cost,$0.005 per session,yes
+15,Example,string,Concrete example of good output,"'Chào bạn! Hôm nay chúng ta sẽ...'",yes
