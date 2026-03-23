@@ -58,6 +58,7 @@ brv query "{feature} EaseUI architecture"
 
 > **Trigger:** "plan [feature]", "use cases", "define requirements"
 > **Prerequisite:** `brainstorm.md` must exist. If not, run Phase 1 first.
+> **Compliance Gate:** Run `python3 scripts/compliance_checker.py {feature-id} --phase 1` — must PASS before starting Phase 2.
 > **Output:** `plans/specs/{feature-id}/usecases.md`
 > **Gate:** User approves use cases before advancing to Phase 3.
 
@@ -102,6 +103,7 @@ IF brainstorm revealed new frameworks/patterns/tools:
 
 > **Trigger:** "document [feature]", "spec [feature]", "blueprint", "tech spec"
 > **Prerequisite:** `usecases.md` must exist. If not, run Phase 2 first.
+> **Compliance Gate:** Run `python3 scripts/compliance_checker.py {feature-id} --phase 2` — must PASS before starting Phase 3.
 > **Output:** `plans/specs/{feature-id}/blueprint.md` + `STATUS.md` (created/updated)
 > **Gate:** User approves blueprint before advancing to Phase 4.
 
@@ -153,6 +155,7 @@ IF brainstorm revealed new frameworks/patterns/tools:
 
 > **Trigger:** "build [feature]", "implement", "develop", "code"
 > **Prerequisite:** `blueprint.md` must exist. If not, run Phase 3 first.
+> **Compliance Gate:** Run `python3 scripts/compliance_checker.py {feature-id} --phase 3` — must PASS before starting Phase 4.
 > **Output:** Working source code, verified and synced.
 
 ### Load Skills
@@ -205,6 +208,21 @@ Before advancing each gate, rate confidence 0-100%:
    ```
 6. **Run 10-Point Design Audit** (creative gate) — must score ≥ 8/10.
 7. **Test at breakpoints:** 375px, 768px, 1024px, 1440px.
+
+### Post-Dev Compliance Audit (MANDATORY — HARD_GATE)
+
+> 🔴 **After coding, BEFORE claiming complete. This is NOT optional.**
+
+// turbo
+```bash
+python3 scripts/compliance_checker.py {feature-id} --full
+```
+
+If compliance_checker fails → FIX before proceeding. Log result:
+// turbo
+```bash
+python3 scripts/telemetry.py log --type compliance_check --workflow feature-dev --details "{feature-id} full check"
+```
 
 ### Auto-Fix Retry (Gates 2, 4, 5 only)
 

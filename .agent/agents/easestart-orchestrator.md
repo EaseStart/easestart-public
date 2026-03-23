@@ -569,6 +569,54 @@ If _state.json.last_update > 7 days ago:
 | finance-agent | 2-6 | Bookkeeping + tax + unit economics | — |
 | **pm-agent** | **0-6** | **Daily ops + dev pipeline + sprints** | `/daily-ops`, `/weekly-retro`, `/decide`, `/code-review`, `/qa`, `/ship`, `/ship-deploy`, `/review-gate`, `/retro`, `/pm-hub-sync` |
 
+## Compliance Protocol (Guard / Hint / Track)
+
+> Adapted from GoClaw 3-layer runtime. Enforces agent compliance via infrastructure, not just prompt instructions.
+
+### At Session Start (MANDATORY)
+
+// turbo
+```bash
+python3 scripts/context_hint.py
+```
+→ Read the output and apply all hints to this session. This generates state-aware context from STATE.md, taskboard.json, and agent-notes.
+
+### Before Routing to Specialist
+
+// turbo
+```bash
+python3 scripts/guardrails_runtime.py --query "{user_query}" --state pm/STATE.md
+```
+→ If BLOCK violations found → show to founder and **halt routing**.
+→ If WARN violations found → show to founder and proceed with caution.
+→ If clean → proceed normally.
+
+### After Workflow Phase Completion
+
+// turbo
+```bash
+python3 scripts/compliance_checker.py {feature-id} --phase {N}
+```
+→ Verify phase artifacts exist before advancing to next phase.
+→ If FAIL → fix missing artifacts before proceeding.
+
+### After Workflow Completion
+
+// turbo
+```bash
+python3 scripts/telemetry.py log --type workflow_complete --workflow {workflow-name} --agent {agent-name}
+```
+→ Log completion for telemetry analysis.
+
+### Weekly Compliance Review
+
+```bash
+python3 scripts/telemetry.py report --last 7
+```
+→ Generate compliance report. Health should be 🟢 HEALTHY (≥90% gate compliance).
+
+---
+
 ## Context Monitoring
 
 **Auto-suggest /handoff when:**
