@@ -520,7 +520,7 @@ python3 scripts/report.py
 
 ### EaseStart có miễn phí không?
 
-**Hoàn toàn miễn phí.** Open-source, MIT license. Không có plan trả phí, không có premium features ẩn.
+**Hoàn toàn miễn phí.** Mã nguồn công khai theo giấy phép PolyForm Shield 1.0.0: được dùng và sửa tự do, cấm bán lại hoặc làm sản phẩm cạnh tranh. Không có plan trả phí, không có premium features ẩn.
 
 ### Cần API key không?
 

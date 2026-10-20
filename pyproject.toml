@@ -7,7 +7,7 @@ name = "easestart"
 version = "1.0.0"
 description = "AI-powered Startup Co-pilot — stage-gated AI agents with curated startup knowledge"
 readme = "README.md"
-license = {text = "MIT"}
+license = {file = "LICENSE"}
 requires-python = ">=3.9"
 authors = [
     {name = "Jang Trịnh", email = "jang@easeui.design"}
@@ -16,7 +16,6 @@ keywords = ["startup", "ai", "founder", "copilot", "lean-startup", "agent"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",

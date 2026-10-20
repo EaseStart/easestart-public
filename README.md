@@ -6,7 +6,7 @@
 
 <br />
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-000000.svg?style=flat-square)](LICENSE)
+[![License: PolyForm Shield 1.0.0](https://img.shields.io/badge/License-PolyForm_Shield_1.0.0-000000.svg?style=flat-square)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-000000.svg?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![Knowledge Rows](https://img.shields.io/badge/Knowledge_Rows-1110-000000.svg?style=flat-square)](data/_REGISTRY.md)
 [![Agents](https://img.shields.io/badge/Agents-14-000000.svg?style=flat-square)](docs/ARCHITECTURE.md)
@@ -690,7 +690,7 @@ easestart/
 ├── pyproject.toml           ← Package configuration
 ├── requirements-tools.txt   ← Optional tool dependencies
 ├── CHANGELOG.md             ← Release history
-├── LICENSE                  ← MIT License
+├── LICENSE                  ← PolyForm Shield 1.0.0
 └── GEMINI.md                ← AI IDE configuration
 ```
 
@@ -823,7 +823,7 @@ python3 autoresearch/evaluate.py     # Knowledge score maintained?
 
 ## 📄 License
 
-[MIT](LICENSE) — use it, fork it, build on it.
+[PolyForm Shield 1.0.0](LICENSE) — use it, fork it, build on it; just don't resell it or ship a competing product from it.
 
 ---
 
